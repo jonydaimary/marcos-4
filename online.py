@@ -50,4 +50,4 @@ def is_owner(ctx):
 	
 
 
-@client.command(pass_context=True)
+client.run(os.getenv('Token')) 
