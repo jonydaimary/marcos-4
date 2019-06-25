@@ -15,21 +15,23 @@ import json
 import aiohttp		
 
 
-Forbidden= discord.Embed(title="Permission Denied", description="1) Please check whether you have permission to perform this action or not. \n2) Please check whether my role has permission to perform this action in this channel or not. \n3) Please check my role position.", color=0x00ff00)
-client = commands.Bot(description="MultiVerse Official Bot", command_prefix=commands.when_mentioned_or("!!"), pm_help = True)
+Forbidden= discord.Embed(title="Permission Denied", description="1) Please check whether you have permission to perform this action or not. \n2) Please check whether my role has permission to perform this action in this channel or not. \n3) Please check my role position.", color=0xf9fcfc)
+client = commands.Bot(description="marcos bot", command_prefix=commands.when_mentioned_or("!!"), pm_help = True)
+
+
 client.remove_command('help')
 
 
 
 async def status_task():
     while True:
-        await client.change_presence(game=discord.Game(name='!!help'))
-        await asyncio.sleep(50)
-        await client.change_presence(game=discord.Game(name='with '+str(len(set(client.get_all_members())))+' users'))
-        await asyncio.sleep(50)
-        await client.change_presence(game=discord.Game(name='in '+str(len(client.servers))+' servers'))
-        await asyncio.sleep(50)
-	
+        await client.change_presence(game=discord.Game(name='!!help | marcos.#0290', type=2)) 
+        await asyncio.sleep(120)
+        await client.change_presence(game=discord.Game(name='BETA VERSION')) 
+        await asyncio.sleep(120)
+        await client.change_presence(game=discord.Game(name='with ' +str(len(set(client.get_all_members())))+' users', type=3))
+        await asyncio.sleep(120)
+       
 	
 	
 @client.event
@@ -38,8 +40,14 @@ async def on_ready():
     print('--------')
     print('--------')
     print('Started New here ')
-    print('Created by MARCOS')
+    print('Created by marcos')
     client.loop.create_task(status_task())
+
+	
+def is_owner(ctx):
+    return ctx.message.author.id == "498378677512437762"	
+		
+	
 
 
 @client.command(pass_context=True)
